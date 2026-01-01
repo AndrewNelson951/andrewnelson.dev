@@ -4,112 +4,274 @@
   <meta charset="UTF-8" />
   <title>Andrew Nelson | Projects</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;500;700&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+
   <style>
+    :root {
+      /* Palette: Dark Charcoal & Warm Sunset */
+      --bg-body: #121212;
+      --bg-card: #1e1e1e;
+      --bg-card-hover: #252525;
+      --text-main: #e0e0e0;
+      --text-muted: #a0a0a0;
+      --accent: #f97316; /* Orange-500 */
+      --accent-glow: rgba(249, 115, 22, 0.4);
+      --border: #333;
+      
+      --font-display: 'Outfit', sans-serif;
+      --font-body: 'Plus Jakarta Sans', sans-serif;
+      
+      --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
     body {
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-      background: #f7f7f7;
-      color: #222;
+      font-family: var(--font-body);
+      background-color: var(--bg-body);
+      color: var(--text-main);
       margin: 0;
       padding: 0;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
     }
+
+    /* Gradient Mesh Background Effect */
+    body::before {
+      content: '';
+      position: fixed;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle at 50% 50%, rgba(249, 115, 22, 0.08), transparent 40%),
+                  radial-gradient(circle at 10% 20%, rgba(255, 255, 255, 0.02), transparent 40%);
+      z-index: -1;
+      pointer-events: none;
+    }
+
     .container {
-      max-width: 900px;
+      max-width: 1000px;
       margin: 0 auto;
-      padding: 40px 20px;
+      padding: 80px 24px;
     }
+
+    /* Header */
+    header {
+      margin-bottom: 80px;
+      animation: fadeInDown 0.8s ease-out;
+    }
+
     h1 {
-      font-size: 28px;
-      margin-bottom: 10px;
+      font-family: var(--font-display);
+      font-size: 48px;
+      font-weight: 700;
+      margin: 0 0 16px 0;
+      letter-spacing: -0.02em;
+      background: linear-gradient(to right, #fff, #bbb);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
+
     p.intro {
-      font-size: 16px;
-      color: #444;
-      max-width: 700px;
+      font-size: 18px;
+      color: var(--text-muted);
+      max-width: 600px;
+      font-weight: 400;
+      border-left: 2px solid var(--accent);
+      padding-left: 20px;
     }
+
+    /* Projects Grid */
     .projects {
-      margin-top: 40px;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 32px;
+      animation: fadeInUp 1s ease-out 0.2s backwards;
     }
+
     .project {
-      background: #fff;
-      border-radius: 6px;
-      padding: 20px;
-      margin-bottom: 20px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 32px;
+      transition: var(--transition);
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      overflow: hidden;
     }
+
+    .project::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: var(--accent);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: var(--transition);
+    }
+
+    .project:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 40px -10px rgba(0,0,0,0.5);
+      border-color: var(--accent);
+    }
+
+    .project:hover::before {
+      transform: scaleX(1);
+    }
+
     .project h2 {
-      font-size: 20px;
-      margin: 0 0 8px 0;
-    }
-    .project p {
+      font-family: var(--font-display);
+      font-size: 24px;
       margin: 0 0 12px 0;
-      color: #555;
+      color: #fff;
     }
-    .links a {
-      margin-right: 15px;
+
+    .project p {
+      font-size: 15px;
+      color: var(--text-muted);
+      margin: 0 0 24px 0;
+      flex-grow: 1;
+    }
+
+    .links {
+      display: flex;
+      gap: 16px;
+      margin-top: auto;
+    }
+
+    .btn {
       text-decoration: none;
-      color: #0066cc;
-      font-size: 14px;
-    }
-    .links a:hover {
-      text-decoration: underline;
-    }
-    footer {
-      margin-top: 60px;
       font-size: 13px;
-      color: #777;
+      font-weight: 600;
+      padding: 10px 18px;
+      border-radius: 6px;
+      transition: var(--transition);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #000;
+    }
+    .btn-primary:hover {
+      background: #fff;
+      box-shadow: 0 0 15px var(--accent-glow);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--text-main);
+    }
+    .btn-secondary:hover {
+      border-color: #fff;
+      background: rgba(255,255,255,0.05);
+    }
+
+    /* Footer */
+    footer {
+      margin-top: 100px;
+      border-top: 1px solid var(--border);
+      padding-top: 40px;
+      text-align: center;
+      color: #555;
+      font-size: 13px;
+      animation: fadeIn 1s ease-out 0.5s backwards;
+    }
+
+    /* Animations */
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
     }
   </style>
 </head>
 <body>
 
   <div class="container">
-    <h1>Andrew Nelson</h1>
-    <p class="intro">
-      This page lists active and exploratory projects focused on rapid prototyping,
-      early validation, and small, deployable SaaS experiments.
-    </p>
+    <header>
+      <h1>Andrew Nelson</h1>
+      <p class="intro">
+        Building rapid prototypes and small SaaS experiments. A living index of active validation projects.
+      </p>
+    </header>
 
     <div class="projects">
 
+      <!-- QuandoChuando -->
       <div class="project">
-        <h2>QuandoChuando</h2>
-        <p>
-          Prototype exploring how simple planning tools support fitness consistency.
-          Focused on structure, follow-through, and low-friction scheduling.
-        </p>
+        <div>
+          <h2>QuandoChuando</h2>
+          <p>
+            Prototype exploring how simple planning tools support fitness consistency.
+            Focused on structure, follow-through, and low-friction scheduling.
+          </p>
+        </div>
         <div class="links">
-          <a href="https://quandochuando.andrewnelson.dev/" target="_blank">Live demo</a>
-          <a href="https://github.com/AndrewNelson951/quandochuando" target="_blank">GitHub repo</a>
+          <a href="https://quandochuando.andrewnelson.dev/" target="_blank" class="btn btn-primary">Live Demo</a>
+          <a href="https://github.com/AndrewNelson951/quandochuando" target="_blank" class="btn btn-secondary">Code</a>
         </div>
       </div>
 
+      <!-- Core Compass -->
       <div class="project">
-        <h2>Tailwind Landing Page Starter</h2>
-        <p>
-          Lightweight landing page starter used to test positioning and messaging
-          before committing to product development.
-        </p>
+        <div>
+          <h2>Core Compass</h2>
+          <p>
+            Interactive single-page app guiding users through a structured
+            values clarification exercise using grouping and action phrasing.
+          </p>
+        </div>
         <div class="links">
-          <a href="https://tailwind.andrewnelson.dev/" target="_blank">Live demo</a>
-          <a href="https://github.com/AndrewNelson951/tailwind-landing-page" target="_blank">GitHub repo</a>
+          <a href="https://core-compass.andrewnelson.dev/" target="_blank" class="btn btn-primary">Live Demo</a>
+          <a href="https://github.com/AndrewNelson951/core-compass" target="_blank" class="btn btn-secondary">Code</a>
         </div>
       </div>
 
+      <!-- Tailwind Starter -->
       <div class="project">
-        <h2>Core Compass</h2>
-        <p>
-          Interactive single-page app that guides users through a structured
-          values clarification exercise using grouping and action phrasing.
-        </p>
+        <div>
+          <h2>Tailwind Starter</h2>
+          <p>
+            Lightweight landing page starter used to test positioning and messaging
+            before committing to product development.
+          </p>
+        </div>
         <div class="links">
-          <a href="https://core-compass.andrewnelson.dev/" target="_blank">Live demo</a>
-          <a href="https://github.com/AndrewNelson951/core-compass" target="_blank">GitHub repo</a>
+          <a href="https://tailwind.andrewnelson.dev/" target="_blank" class="btn btn-primary">Live Demo</a>
+          <a href="https://github.com/AndrewNelson951/tailwind-landing-page" target="_blank" class="btn btn-secondary">Code</a>
         </div>
       </div>
 
     </div>
 
     <footer>
-      Built as a living index of ongoing work.
+      &copy; 2026 Andrew Nelson. Built as a living index of ongoing work.
     </footer>
   </div>
 
