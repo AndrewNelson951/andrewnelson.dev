@@ -209,6 +209,28 @@
       from { opacity: 0; }
       to { opacity: 1; }
     }
+
+    .highlight-badge {
+      display: inline-block;
+      background: var(--accent);
+      color: #121212; /* Dark text on bright background */
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 0.9em; /* Slightly smaller to fit layout, but bolder */
+      padding: 0px 8px;
+      border-radius: 6px;
+      transform: rotate(-3deg) translateY(-2px);
+      box-shadow: 0 4px 20px rgba(249, 115, 22, 0.6);
+      margin: 0 4px;
+      vertical-align: middle;
+      border: 2px solid #fff; /* High contrast border */
+      animation: popIn 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.5s backwards;
+    }
+    
+    @keyframes popIn {
+      from { opacity: 0; transform: scale(0.5) rotate(10deg); }
+      to { opacity: 1; transform: rotate(-3deg) translateY(-2px); }
+    }
   </style>
 </head>
 <body>
@@ -217,7 +239,7 @@
     <header>
       <h1>Andrew Nelson</h1>
       <p class="intro">
-        Building rapid prototypes and small SaaS experiments. A living index of active validation projects.
+        Building rapid prototypes and small SaaS experiments. An ongoing showcase of projects selected from <span class="highlight-badge">50+</span> tests.
       </p>
     </header>
 
@@ -271,7 +293,7 @@
     </div>
 
     <footer>
-      &copy; 2026 Andrew Nelson. Built as a living index of ongoing work.
+      &copy; 2026 Andrew Nelson. Built as an ongoing showcase of selected work.
     </footer>
   </div>
 
