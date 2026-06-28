@@ -1,70 +1,44 @@
 # andrewnelson.dev
 
-This repo hosts the index page for my personal project portfolio.
+Static landing page for `andrewnelson.dev` — a hub linking out to a small suite of
+personal health/fitness tools. Single self-contained `index.html`, no build step.
 
-It acts as a simple entry point to a set of small, deployable experiments focused on rapid prototyping, early validation, and SaaS-oriented thinking.
+## Links
 
-Live site: https://andrewnelson.dev/
+| # | Tool | URL | Notes |
+|---|------|-----|-------|
+| 01 | Body Composition | https://bodycomp.andrewnelson.dev/ | private |
+| 02 | Meal Plan | https://visceral-meal-plan.andrewnelson.dev/ | carb cycling |
+| 03 | Workout Tracker | https://quandochuando.andrewnelson.dev/ | full body, Mon/Wed/Fri |
+| 04 | Momentum Log | https://momentum-log.andrewnelson.dev/ | daily tracking |
 
----
+## Stack
 
-## What this repo contains
+- Plain HTML + CSS, no framework, no JS dependencies (one inline script sets the footer year).
+- Fonts: IBM Plex Sans / IBM Plex Mono via Google Fonts.
+- Hosted on Cloudflare Pages; subdomains protected via Cloudflare Access (email OTP) where marked private.
 
-• A static index page listing active projects  
-• Links to live deployments  
-• Links to source repositories
+## Design system
 
-There is no app logic here.
+Shared across all `*.andrewnelson.dev` tools:
 
----
+- White background, IBM Plex Sans (body) + IBM Plex Mono (labels/data).
+- Accent palette: red-orange `#e8552d`, gray `#6b7280`, blue `#2563eb`, teal `#0f766e`.
+- Each tool keyed to its own accent on the left border.
 
-## Projects currently listed
+## Deploy
 
-### QuandoChuando
+```sh
+wrangler pages deploy . --project-name=andrewnelson-dev
+```
 
-Prototype exploring how simple planning tools support fitness consistency.
+Or push to the connected branch and let Cloudflare Pages build on commit. No build
+command needed — output directory is the repo root.
 
-Live: https://quandochuando.andrewnelson.dev/  
-Repo: https://github.com/AndrewNelson951/quandochuando
+## Files
 
----
-
-### Tailwind Landing Page Starter
-
-Lightweight landing page starter used to test positioning and messaging before building products.
-
-Live: https://tailwind.andrewnelson.dev/  
-Repo: https://github.com/AndrewNelson951/tailwind-landing-page
-
----
-
-### Core Compass
-
-Interactive single-page app for a structured values clarification exercise.
-
-Live: https://core-compass.andrewnelson.dev/  
-Repo: https://github.com/AndrewNelson951/core-compass
-
----
-
-## How this page is used
-
-This page is updated as projects are added, paused, or retired. It is meant to stay current and readable, not exhaustive.
-
-Each linked project includes its own README with context and scope.
-
----
-
-## Deployment
-
-The site is deployed as a static page via Cloudflare Pages.
-
-Updates are made by committing changes to this repository.
-
----
-
-## Scope and intent
-
-This repo is not a framework, template, or product. It is a lightweight index meant to make ongoing work easy to browse.
-
-Built to organize work, not to sell it.
+```
+.
+├── index.html   # the landing page
+└── README.md
+```
