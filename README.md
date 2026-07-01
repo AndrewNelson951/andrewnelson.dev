@@ -9,7 +9,7 @@ personal health/fitness tools. Single self-contained `index.html`, no build step
 |---|------|-----|-------|
 | 01 | Body Composition | https://bodycomp.andrewnelson.dev/ | private |
 | 02 | Meal Plan | https://visceral-meal-plan.andrewnelson.dev/ | carb cycling |
-| 03 | Workout Tracker | https://quandochuando.andrewnelson.dev/ | full body, Mon/Wed/Fri |
+| 03 | Workout Schedule | https://weekly-workout.andrewnelson.dev/ | full body, Mon/Wed/Fri |
 | 04 | Momentum Log | https://momentum-log.andrewnelson.dev/ | daily tracking |
 
 ## Stack
